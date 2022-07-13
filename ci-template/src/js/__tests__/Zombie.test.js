@@ -1,18 +1,14 @@
-import Zombie from '../Zombie';
+import Character from '../Zombie';
 
 test('should check the class Zombie', () => {
-  class TestZombie {
-    constructor(name) {
-      this.name = name;
-      this.health = 100;
-      this.level = 1;
-      this.type = 'Zombie';
-      this.attack = 40;
-      this.defence = 10;
-    }
-  }
-
-  const received = new TestZombie('Zombie');
-  const expected = new Zombie('Zombie');
-  expect(received).toEqual(expected);
+  const character = new Character('Игрок', 'Zombie');
+  const result = {
+    name: 'Игрок',
+    type: 'Zombie',
+    health: 100,
+    level: 1,
+    attack: 40,
+    defence: 10,
+  };
+  expect(character).toMatchObject(result);
 });

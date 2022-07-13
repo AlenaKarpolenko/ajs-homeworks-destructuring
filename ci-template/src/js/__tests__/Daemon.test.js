@@ -1,18 +1,14 @@
-import Daemon from '../Daemon';
+import Character from '../Daemon';
 
 test('should check the class Daemon', () => {
-  class TestDaemon {
-    constructor(name) {
-      this.name = name;
-      this.health = 100;
-      this.level = 1;
-      this.type = 'Daemon';
-      this.attack = 10;
-      this.defence = 40;
-    }
-  }
-
-  const received = new TestDaemon('Daemon');
-  const expected = new Daemon('Daemon');
-  expect(received).toEqual(expected);
+  const character = new Character('Игрок', 'Daemon');
+  const result = {
+    name: 'Игрок',
+    type: 'Daemon',
+    health: 100,
+    level: 1,
+    attack: 10,
+    defence: 40,
+  };
+  expect(character).toMatchObject(result);
 });

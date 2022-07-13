@@ -1,11 +1,19 @@
 export default class Character {
-  constructor(name) {
-	  if (!name || name.length < 2 || name.length > 10) {
-      throw new Error('Ошибка!');
-	  }
+  constructor(name, type) {
+    if (name.length < 2 || name.length > 10) {
+      throw new Error('Ошибка');
+    } else {
+      this.name = name;
+    }
 
-	  this.name = name;
-	  this.health = 100;
-	  this.level = 1;
+    const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+    if (types.indexOf(type) === -1) {
+      throw new Error('Ошибка');
+    } else {
+      this.type = type;
+    }
+
+    this.health = 100;
+    this.level = 1;
   }
 }

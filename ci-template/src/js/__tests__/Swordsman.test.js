@@ -1,18 +1,14 @@
-import Swordsman from '../Swordsman';
+import Character from '../Swordsman';
 
 test('should check the class Swordsman', () => {
-  class TestSwordsman {
-    constructor(name) {
-      this.name = name;
-      this.health = 100;
-      this.level = 1;
-      this.type = 'Swordsman';
-      this.attack = 40;
-      this.defence = 10;
-    }
-  }
-
-  const received = new TestSwordsman('Swordsman');
-  const expected = new Swordsman('Swordsman');
-  expect(received).toEqual(expected);
+  const character = new Character('Игрок', 'Swordsman');
+  const result = {
+    name: 'Игрок',
+    type: 'Swordsman',
+    health: 100,
+    level: 1,
+    attack: 40,
+    defence: 10,
+  };
+  expect(character).toMatchObject(result);
 });
