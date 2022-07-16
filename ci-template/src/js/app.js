@@ -1,15 +1,12 @@
-export default function props (objectSort, arraySort = []) {
-	let arrAllKey = [];
-	for (const key in objectSort) {
-	  if (arraySort.indexOf(key) === -1) {
-		arrAllKey.push(key);
-	  }
-	}
-	arrAllKey = [...arraySort, ...arrAllKey.sort()];
-
+export default function attackExtractor(character) {
 	const result = [];
-	for (const key of arrAllKey) {
-	  result.push({ key, value: objectSort[key] });
+	for (const key of character.special) {
+	  const {
+		id, name, icon, description = 'Описание недоступно',
+	  } = key;
+	  result.push({
+		id, name, icon, description,
+	  });
 	}
 	return result;
   }

@@ -1,43 +1,38 @@
-import props from '../app';
+import attackExtractor from '../app';
 
-test('sort props', () => {
-  const obj = {
-    name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
+test('extract 2 attacks', () => {
+  const character = {
+    special: [
+      {
+        id: 8,
+        name: 'Двойной выстрел',
+        icon: 'http://...',
+        description: 'Двойной выстрел наносит двойной урон',
+      },
+      {
+        id: 9,
+        name: 'Нокаутирующий удар',
+        icon: 'http://...',
+      },
+    ],
   };
   const result = [
-    { key: 'name', value: 'мечник' },
-    { key: 'level', value: 2 },
-    { key: 'attack', value: 80 },
-    { key: 'defence', value: 40 },
-    { key: 'health', value: 10 },
+    {
+      id: 8, name: 'Двойной выстрел', icon: 'http://...', description: 'Двойной выстрел наносит двойной урон',
+    },
+    {
+      id: 9, name: 'Нокаутирующий удар', icon: 'http://...', description: 'Описание недоступно',
+    },
   ];
-  expect(props(obj, ['name', 'level'])).toEqual(result);
+  expect(attackExtractor(character)).toEqual(result);
 });
 
-test('sort props', () => {
-  const obj = {
-    name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
-  };
-  const result = [
-    { key: 'level', value: 2 },
-    { key: 'defence', value: 40 },
-    { key: 'name', value: 'мечник' },
-    { key: 'attack', value: 80 },
-    { key: 'health', value: 10 },
-  ];
-  expect(props(obj, ['level', 'defence', 'name'])).toEqual(result);
-});
 
-test('sort w/o props', () => {
-  const obj = {
-    name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
+
+test('extract attacks', () => {
+  const character = {
+    special: [],
   };
-  const result = [
-    { key: 'attack', value: 80 },
-    { key: 'defence', value: 40 },
-    { key: 'health', value: 10 },
-    { key: 'level', value: 2 },
-    { key: 'name', value: 'мечник' },
-  ];
-  expect(props(obj)).toEqual(result);
+  const result = [];
+  expect(attackExtractor(character)).toEqual(result);
 });
